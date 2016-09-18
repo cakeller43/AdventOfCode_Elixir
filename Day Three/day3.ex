@@ -37,22 +37,22 @@ defmodule Day3 do
     visitedLocations
   end
 
-  defp parse([head | tail], visLocs, curLoc) when head == ">" do
+  defp parse([">" | tail], visLocs, curLoc) do
     newLoc = put_elem(curLoc, 0, elem(curLoc,0) + 1)
     parse(tail, Map.put_new(visLocs, newLoc, 0), newLoc)
   end
 
-  defp parse([head | tail], visLocs, curLoc) when head == "<" do
+  defp parse(["<" | tail], visLocs, curLoc) do
     newLoc = put_elem(curLoc, 0, elem(curLoc,0) - 1)
     parse(tail, Map.put_new(visLocs, newLoc, 0), newLoc)
   end
 
-  defp parse([head | tail], visLocs, curLoc) when head == "^" do
+  defp parse(["^" | tail], visLocs, curLoc) do
     newLoc = put_elem(curLoc, 1, elem(curLoc,1) + 1)
     parse(tail, Map.put_new(visLocs, newLoc, 0), newLoc)
   end
 
-  defp parse([head | tail], visLocs, curLoc) when head == "v" do
+  defp parse(["v" | tail], visLocs, curLoc) do
     newLoc = put_elem(curLoc, 1, elem(curLoc,1) - 1)
     parse(tail, Map.put_new(visLocs, newLoc, 0), newLoc)
   end
