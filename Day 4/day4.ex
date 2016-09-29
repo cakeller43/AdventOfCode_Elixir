@@ -1,11 +1,12 @@
 defmodule Day4 do
-	@inputstring "abcdef"
+	@inputstring "bgvyzdsv"
+	@prefix "000000"
 
 	def run do
-		findSeed(0)
+		findNum(0)
 	end
 
-	defp findSeed(seed) do
+	defp findNum(seed) do
 		makeKey(@inputstring,seed)
 		|> convert
 		|> check(seed)
@@ -16,13 +17,14 @@ defmodule Day4 do
 	end
 
 	defp convert(key) do
-		Base.encode16(key)
+		:crypto.hash(:md5, key)
+		|> Base.encode16
 	end
 
 	defp check(hash, seed) do
-		case String.starts_with?(hash,"00000") do
+		case String.starts_with?(hash,@prefix) do
 			true -> seed
-			false -> findSeed(seed+1)
+			false -> findNum(seed+1)
 		end
 	end
 end
