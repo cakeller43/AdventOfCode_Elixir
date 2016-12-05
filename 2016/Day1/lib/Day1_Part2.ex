@@ -1,4 +1,4 @@
-defmodule Day1 do
+defmodule Day1_2 do
     @input 'input.txt'
     
     # ---Part2---

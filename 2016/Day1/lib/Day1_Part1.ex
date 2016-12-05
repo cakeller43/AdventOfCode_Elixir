@@ -63,8 +63,7 @@ defmodule Day1 do
     
     # Move
     def move(:north, distance, [x,y]) do
-        dest = [x, y + distance]
-        
+        dest = [x, y + distance]        
         {:north, dest}
     end
     
